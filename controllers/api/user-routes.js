@@ -22,13 +22,13 @@ router.post('/', async (req, res) => {
     }
 
 })
-
+//log in
 router.post('/login', async (req, res) => {
     try{
        
         const currentUser = await User.findOne({
             where: {
-                email: req.body.email
+                username: req.body.username
             },
         }) 
         if (!currentUser){
@@ -37,11 +37,23 @@ router.post('/login', async (req, res) => {
         }
         req.session.save(() => {
             req.session.loggedIn = true
-            res.status(200).json.apply({message: "Login Successful!"})
+            res.status(200).json({message: "Login Successful!"})
         })
     }catch(err){
         res.status(500).json(err)
     }
 })
+
+//logout
+router.post('/logout', (req, res) => {
+    console.log(req.session.loggedIn)
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;

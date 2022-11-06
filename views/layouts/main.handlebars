@@ -12,7 +12,12 @@
     <nav id="main-nav" class="container">
         <a href="/">Home</a>
         <a href="#"> Dashboard</a>
-        <a href="/login">Login</a>
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+         <a href="/login">Login</a>
+        {{/if}}
+      
         
     </nav>
     <h1 id="main-header" class="container">Mike's Tech Blog</h1>
