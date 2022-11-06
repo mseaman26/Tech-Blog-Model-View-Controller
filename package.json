@@ -7,6 +7,7 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
     "sequelize": "^6.25.3"
   },
   "name": "tech-blog-model-view-controller",
@@ -15,7 +16,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",

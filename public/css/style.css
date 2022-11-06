@@ -1,0 +1,19 @@
+:root{
+    --darkbackground: rgb(240, 112, 112);
+}
+
+#main-nav{
+    display: flex;
+    background-color: var(--darkbackground);
+    font-size: 30px;
+    color: white;
+    justify-content: space-around;
+    margin: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+#main-header{
+    display: flex;
+    justify-content: center;
+    background-color: var(--darkbackground);
+}
