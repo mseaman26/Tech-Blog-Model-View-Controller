@@ -17,3 +17,10 @@
     justify-content: center;
     background-color: var(--darkbackground);
 }
+.custom-input{
+    width: 30%;
+    display: inline-block;
+}
+#existing-user{
+    top: -20px;
+}
