@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
             post.get({ plain: true })
             
         )
-        console.log(posts)
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn,
@@ -35,4 +34,9 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
+router.get('/dashboard',withAuth, (req, res) => {
+    res.render('dashboard', {
+        loggedIn: req.session.loggedIn
+    })
+})
 module.exports = router;
