@@ -39,4 +39,9 @@ router.get('/dashboard',withAuth, (req, res) => {
         loggedIn: req.session.loggedIn
     })
 })
+router.get('/create-post', withAuth, (req, res) => {
+    res.render('create-post', {
+        loggedIn: req.session.loggedIn
+    })
+})
 module.exports = router;
