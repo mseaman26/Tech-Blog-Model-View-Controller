@@ -8,14 +8,14 @@ router.get('/', async (req, res) => {
         const dbPostData = await Post.findAll({
             include: [{
                 model: User,
-                attributes: ['username']
             }]
         })
-        console.log(dbPostData)
+        
         const posts = dbPostData.map((post) => 
             post.get({ plain: true })
             
         )
+        console.log(posts)
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn,
