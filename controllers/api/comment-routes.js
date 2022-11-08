@@ -9,8 +9,9 @@ router.post('/', async (req, res) => {
            post_id: req.session.post_id,
            body: req.body.body
         })
+        console.log(newComment)
         req.session.save(() => {
-            req.session.loggedIn = ture
+            req.session.loggedIn = true
 
             res.status(200).json(newComment)
         })

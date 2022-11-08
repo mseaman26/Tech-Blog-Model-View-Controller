@@ -1,8 +1,19 @@
-<h1>{{title}}</h1>
-<h3>By: {{user.username}}</h3>
-<p>{{body}}</p>
+<h1>{{post.title}}</h1>
+<h3>By: {{post.user.username}}</h3>
+<p>{{post.body}}</p>
 <br>
-<p>Posted: {{format_date createdAt}}</p>
+<p>Posted: {{format_date post.createdAt}}</p>
+<h3>comments:</h3>
+
+{{#each postComments}}
+    <section class="card">
+        <h1>{{body}}</h1>
+        <p>By: {{user.username}}</p>
+        <p>{{format_date createdAt}}</p>
+    </section>
+
+{{/each}}
+
 
 <form>
   <div class="form-group">
