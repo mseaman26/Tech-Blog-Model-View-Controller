@@ -25,6 +25,10 @@
     top: -20px;
 }
 .post-card, .post-card:hover{
-    color: inherit;
+    background-color: rgb(42, 202, 255);
+    color: wheat;
     text-decoration: none;
+}
+.card{
+    background-color: rgb(42, 202, 255);
 }
