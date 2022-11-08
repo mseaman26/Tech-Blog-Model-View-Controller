@@ -49,7 +49,7 @@ router.get('/create-post', withAuth, (req, res) => {
         loggedIn: req.session.loggedIn
     })
 })
-//view single post
+//view single post 
 router.get('/post/:id', withAuth, async (req, res) => {
     const dbPost = await Post.findByPk(req.params.id,{
         include: [{
@@ -79,7 +79,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
         postComments: postComments
     })
 })
-
+//edit post
 router.get('/posts/edit/:id', withAuth, async (req, res) => {
     const dbEditPost = await Post.findByPk(req.params.id, {
     })

@@ -11,8 +11,10 @@ const addCommentHandler = async (event) => {
                 body: commentBody,
             }),
             headers: { 'Content-Type': 'application/json' },
+            
         })
         if(response.ok){
+            console.log("reload")
             document.location.reload()
         }
     }

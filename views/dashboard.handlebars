@@ -7,6 +7,10 @@
         <h1>{{post.title}}</h1>
         <p>{{post.body}}</p>
         <p>{{format_date createdAt}}</p>
+        <a href="/posts/edit/{{id}}">
+        <button type="button" class="btn btn-success edit-post-button">Edit Post</button>
+        </a>
+        <button type="button" class="btn btn-danger delete-post-button">Delete Post</button>
     </section>
 </a>
 {{/each}}

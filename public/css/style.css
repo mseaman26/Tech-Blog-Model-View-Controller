@@ -32,3 +32,9 @@
 .card{
     background-color: rgb(42, 202, 255);
 }
+.edit-post-button{
+    width: 150px;
+}
+.delete-post-button{
+    width: 150px;
+}
