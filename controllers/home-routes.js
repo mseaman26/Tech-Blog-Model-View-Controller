@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
         })
         
         const posts = dbPostData.map((post) => 
-            post.get({ plain: true })
-            
+            post.get({ plain: true }) 
         )
         res.render('homepage', {
             posts,
@@ -30,8 +29,18 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
-router.get('/dashboard',withAuth, (req, res) => {
+router.get('/dashboard',withAuth, async(req, res) => {
+    const dbMyPosts = await Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        }
+    })
+    const myPosts = dbMyPosts.map((post) => 
+    post.get({ plain: true }) 
+)
+    
     res.render('dashboard', {
+        myPosts: myPosts,
         loggedIn: req.session.loggedIn
     })
 })

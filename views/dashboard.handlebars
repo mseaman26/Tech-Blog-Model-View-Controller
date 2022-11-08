@@ -1,2 +1,13 @@
 <a href="/create-post">Create Post</a>
 <a href="#">Edit Post</a>
+
+{{#each myPosts as |post|}}
+
+ <section class="card" id="{{id}}">
+        <h1>{{post.title}}</h1>
+        <p>{{post.body}}</p>
+        <p>{{format_date createdAt}}</p>
+    </section>
+
+{{/each}}
+<script src="/js/homepage.js"></script>
