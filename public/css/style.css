@@ -24,3 +24,7 @@
 #existing-user{
     top: -20px;
 }
+.post-card, .post-card:hover{
+    color: inherit;
+    text-decoration: none;
+}

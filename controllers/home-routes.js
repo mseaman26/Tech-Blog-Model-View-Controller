@@ -40,4 +40,15 @@ router.get('/create-post', withAuth, (req, res) => {
         loggedIn: req.session.loggedIn
     })
 })
+
+router.get('/post/:id', withAuth, async (req, res) => {
+    const dbPost = await Post.findByPk(req.params.id,{
+        include: [{
+            model: User,
+        }]
+    })
+    const post = dbPost.get({ plain: true })
+    console.log(post)
+    res.render('post', post )
+})
 module.exports = router;

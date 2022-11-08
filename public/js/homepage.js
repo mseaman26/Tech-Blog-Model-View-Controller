@@ -1,14 +1,15 @@
-const selectPostHandler = async (event) => {
-    event.preventDefault()
-    console.log("click")
-    
+// const selectPostHandler = async (event) => {
+//     event.preventDefault()
+//     console.log("click")
+//     console.log(event.target)
+
    
-}
+// }
 
 
 
 
 
-const doc = document.querySelectorAll('body')
-doc.forEach((el) => {el.addEventListener("click", selectPostHandler)})
+// const doc = document.querySelectorAll('section')
+// doc.forEach((el) => {el.addEventListener("click", selectPostHandler)})
 
