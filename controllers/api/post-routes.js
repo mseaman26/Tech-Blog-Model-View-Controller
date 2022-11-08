@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
+const dateFormat = require("../../utils/helpers.js")
 
 //get all posts
 router.get('/', async (req, res) => {
@@ -24,10 +25,14 @@ router.post ('/', async (req, res) => {
     try {
         const newPost = await Post.create({
             title: req.body.title,
-            body: req.body.body
+            body: req.body.body,
+            user_id: req.session.user_id
+            
+           
         })
         req.session.save(() => {
             req.session.loggedIn = true
+        
             res.status(200).json(newPost)
         })
     }catch(err){

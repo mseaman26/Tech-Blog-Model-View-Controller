@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
       })
 
       req.session.save(() => {
+        req.session.user_id = newUser.id
         req.session.loggedIn = true
 
         res.status(200).json(newUser)
@@ -55,5 +56,6 @@ router.post('/logout', (req, res) => {
       res.status(404).end();
     }
   });
+
 
 module.exports = router;
