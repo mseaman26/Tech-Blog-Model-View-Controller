@@ -23,9 +23,10 @@ Post.init(
       }
     },
     body: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    
     
   },
   {
