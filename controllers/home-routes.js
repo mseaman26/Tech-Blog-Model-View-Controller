@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
-
+//show all posts
 router.get('/', async (req, res) => {
     try {
         const dbPostData = await Post.findAll({
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-
+//login
 router.get('/login', (req, res) => {
     res.render('login')
 })
@@ -49,15 +49,24 @@ router.get('/create-post', withAuth, (req, res) => {
         loggedIn: req.session.loggedIn
     })
 })
-
+//view single post
 router.get('/post/:id', withAuth, async (req, res) => {
     const dbPost = await Post.findByPk(req.params.id,{
         include: [{
             model: User,
         }]
     })
+    req.session.post_id = req.params.id
     const post = dbPost.get({ plain: true })
     console.log(post)
     res.render('post', post )
+})
+
+router.get('/posts/edit/:id', withAuth, async (req, res) => {
+    const dbEditPost = await Post.findByPk(req.params.id, {
+    })
+    req.session.post_id = req.params.id
+    const editPost = await dbEditPost.get({plain: true})
+    res.render('edit-post', editPost)
 })
 module.exports = router;

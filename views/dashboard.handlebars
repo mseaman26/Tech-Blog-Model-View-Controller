@@ -2,12 +2,12 @@
 <a href="#">Edit Post</a>
 
 {{#each myPosts as |post|}}
-
- <section class="card" id="{{id}}">
+<a href="/posts/edit/{{post.id}}" class="post-card">
+  <section class="card" id="{{id}}">
         <h1>{{post.title}}</h1>
         <p>{{post.body}}</p>
         <p>{{format_date createdAt}}</p>
     </section>
-
+</a>
 {{/each}}
 <script src="/js/homepage.js"></script>
