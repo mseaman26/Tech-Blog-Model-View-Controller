@@ -88,3 +88,17 @@ router.get('/posts/edit/:id', withAuth, async (req, res) => {
     res.render('edit-post', editPost)
 })
 module.exports = router;
+//update post
+router.put('/post/:id', withAuth, async (req, res) => {
+    try{
+        req.session.post_id = req.params.id
+        const dbUpdatePost = await Post.findByPk(req.params.id) ({})
+        dbUpdatePost.update({
+            title: req.body.title,
+            body: req.body.body
+        })
+    }catch(err){
+        console.log(err)
+    }
+    
+})

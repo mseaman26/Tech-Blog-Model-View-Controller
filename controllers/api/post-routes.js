@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const dateFormat = require("../../utils/helpers.js")
+const withAuth = require('../../utils/auth');
 
 //get all posts
 router.get('/', async (req, res) => {
@@ -41,3 +42,34 @@ router.post ('/', async (req, res) => {
     }
 })
 module.exports = router
+//view single post 
+router.get('/:id', withAuth, async (req, res) => {
+    try{
+        const dbPost = await Post.findByPk(req.params.id,{
+            include: [{
+                model: User,
+                model: Comment
+            }]
+        })
+        req.session.post_id = req.params.id
+        const post = dbPost.get({ plain: true })
+        res.status(200).json(post)
+    }catch(err){
+        console.log(err)
+    }
+})
+//updat post
+router.put('/:id', withAuth, async (req, res) => {
+    try{
+        const dbUpdatePost = await Post.findByPk(req.params.id,{})
+        dbUpdatePost.update({
+            title: req.body.title,
+            body: req.body.body
+        })
+        req.session.post_id = req.params.id
+        const updatePost = dbUpdatePost.get({ plain: true })
+        res.status(200).json(post)
+    }catch(err){
+        console.log(err)
+    }
+})
