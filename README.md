@@ -16,7 +16,6 @@ This application is a website for posting blogs.  A user can create a username a
   * [Notable Features](#notable-features)
   * [Notable Methods](#notable-methods)
   * [Code Snippets](#code-snippets)
-  * [Installation](#installation)<br />
   * [Contributing to This Repository](#how-to-contribute-to-this-repository)<br />
   * [Tests](#to-run-tests-run-the-following-command)<br />
   * [Questions](#questions)<br />
@@ -73,10 +72,24 @@ router.get('/post/:id', withAuth, async (req, res) => {
     })
 })
    ```
-
- ## Installation
-
-   To install this program, navigate to the root folder of the project in your terminal.  Then run the command: npm init, followed by the command: npm install. Then navigate into the "db" folder and sign into mysql shell with the command: mysql -u root -p.  Then, load the database, run the command: source schema.sql. Then navigate back to the root folder and enter the command: npm run seed. Now that the database is seeded with data, run the command: node server.js.  Once the server is up and running, interact with the routes using the program Insomnia
+Here we have a section of Handlebars code.  This section utilizes a helper function to dynamically render the current user's posts within the dashboard
+```javascript
+{{#each myPosts as |post|}}
+<a href="/posts/edit/{{post.id}}" class="post-card">
+  <section class="custom-post-card" id="{{id}}">
+        <h1>{{post.title}}</h1>
+        <p>{{post.body}}</p>
+        <p>{{format_date createdAt}}</p>
+        <a href="/posts/edit/{{id}}" class="custom-small-button">
+        <button type="button" class="btn btn-success edit-post-button">Edit Post</button>
+        </a>
+        <a href="#" class="custom-small-button"></a>
+        <button type="button" class="btn btn-danger delete-post-button" id={{post.id}}>Delete Post</button>
+    </section>
+</a>
+{{/each}}
+<script src="/js/delete-post.js"></script>
+```
 
     
   ## How to Contribute to This Repository:
