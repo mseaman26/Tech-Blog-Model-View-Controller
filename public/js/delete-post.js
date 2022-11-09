@@ -10,6 +10,11 @@ const deletePostHandler = async (event) => {
  
     deletePost()
     document.location.reload()
+
+    // setTimeout(() => {
+    //     deletePost()
+    // }, 100);
+    // document.location.reload()
 }
 
 
