@@ -1,6 +1,7 @@
 
 
 const editPostHandler = async (event) => {
+  
     event.preventDefault()
     const id = document.querySelector('.edit-post-title').id
     const postToUpdate = await fetch(`/api/posts/${id}`, {
@@ -15,6 +16,7 @@ const editPostHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     })
     document.location.replace('/dashboard')
+    console.log("edit")
 }
 
   document

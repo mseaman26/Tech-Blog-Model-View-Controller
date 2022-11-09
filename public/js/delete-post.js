@@ -1,14 +1,14 @@
 const deletePostHandler = async (event) => {
-    console.log("delete")
+    console.log(event.target)
     event.preventDefault()
-    const id = document.querySelector('.delete-post-button').id
+    const id = event.target.id
     console.log(id)
-    const deletePost = () => fetch(`/api/posts/${id}`, {
+    const deletePost = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
  
-    deletePost()
+    // deletePost()
 
     // document.location.reload()
 
@@ -19,6 +19,13 @@ const deletePostHandler = async (event) => {
 }
 
 
-  document
-  .querySelector('.delete-post-button')
-  .addEventListener('click', deletePostHandler);
+//   document
+//   .querySelector('.delete-post-button')
+//   .addEventListener('click', deletePostHandler);
+
+document.addEventListener('click', function (e) {
+    // But only alert for elements that have an alert-button class
+    if (e.target.classList.contains('delete-post-button')) {
+      deletePostHandler(e);
+    }
+  });
