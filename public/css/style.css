@@ -57,6 +57,7 @@
 .comment{
     border: 5px solid black;
 }
-.custom-post-card{
+.custom-dashboard-render{
     color: black;
+    border: 3px solid black;
 }

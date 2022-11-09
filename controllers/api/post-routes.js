@@ -76,7 +76,6 @@ router.put('/:id', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const dbDeletePost = await Post.findByPk(req.params.id, ({}))
-        console.log(dbDeletePost)
         dbDeletePost.destroy({})
         res.status(200).json({message: "post deleted"})
     }catch(err){

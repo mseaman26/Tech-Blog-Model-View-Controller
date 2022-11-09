@@ -1,7 +1,6 @@
 
 const createPostHandler = async (event) => {
     event.preventDefault()
-    console.log("create post submit button")
     const title = document.querySelector('#create-post-title').value.trim();
     const body = document.querySelector('#create-post-body').value.trim();
 
@@ -14,7 +13,6 @@ const createPostHandler = async (event) => {
         if(response.ok) {
             document.location.replace('/')
         } else {
-            alert('failed to create post')
         }
     }
 }

@@ -46,37 +46,34 @@ This application is a website for posting blogs.  A user can create a username a
   - Dynamically web pages with Handlebars and the associated helper functions
 
  ## Code Snippets
-    Here are our Sequelize associations.  They are vital when it comes to building the behavior of the data tables
-```javascript
-    // Products belongsTo Category
-Product.belongsTo(Category, {foreignKey: "category_id", onDelete: 'CASCADE'});
-// Categories have many Products
-Category.hasMany(Product, {foreignKey: "category_id"});
-// Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {through: ProductTag, foreignKey: "product_id",});
-// // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {through: ProductTag, foreignKey: "tag_id"});
-```
-Here is an example of a route.  This particular route is for update a tag, referencing it by its ID number
-```javascript
-    router.put('/:id', async (req, res) => {
-  // update a tag's name by its `id` value
-  try {
-    const updatedTag = Tag.update({
-      tag_name: req.body.tag_name
-    },
-    {
-      where:{
-        id: req.params.id
-      }
+   Here is an example of a route.  This one renders a single post, followed by its associated comments
+   ```javascript
+//view single post 
+router.get('/post/:id', withAuth, async (req, res) => {
+    const dbPost = await Post.findByPk(req.params.id,{
+        include: [{
+            model: User
+        }]
     })
-    res.status(200).json({message: "tag has been updated!"})
-  }
-  catch (err){
-    res.status(400).json(err)
-  }
-});
-```
+    req.session.post_id = req.params.id
+    const post = dbPost.get({ plain: true })
+    const dbPostComments = await Comment.findAll({
+        where: {
+            post_id: req.session.post_id,
+        },
+        include: [{
+            model: User
+        }]
+    })
+    const postComments = dbPostComments.map((post) => 
+            post.get({ plain: true }))
+    res.render('post', {
+        post: post,
+        postComments: postComments
+    })
+})
+   ```
+
  ## Installation
 
    To install this program, navigate to the root folder of the project in your terminal.  Then run the command: npm init, followed by the command: npm install. Then navigate into the "db" folder and sign into mysql shell with the command: mysql -u root -p.  Then, load the database, run the command: source schema.sql. Then navigate back to the root folder and enter the command: npm run seed. Now that the database is seeded with data, run the command: node server.js.  Once the server is up and running, interact with the routes using the program Insomnia

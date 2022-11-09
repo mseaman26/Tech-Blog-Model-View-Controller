@@ -20,4 +20,3 @@ module.exports = {
     },
   };
   
-  console.log(helperObject.format_date("2022-11-08T01:08:02.000Z"))

@@ -1,9 +1,7 @@
 
 const deletePostHandler = async (event) => {
     event.preventDefault()
-    const id = document.querySelector('.delete-post-button').id
-    console.log(id)
-  
+    const id = document.querySelector('.delete-post-button').id  
   }
 
   document

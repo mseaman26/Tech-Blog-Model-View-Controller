@@ -59,7 +59,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
     })
     req.session.post_id = req.params.id
     const post = dbPost.get({ plain: true })
-    console.log(post)
     const dbPostComments = await Comment.findAll({
         
         where: {
