@@ -1,4 +1,5 @@
 const deletePostHandler = async (event) => {
+    console.log("delete")
     event.preventDefault()
     const id = document.querySelector('.delete-post-button').id
     console.log(id)
@@ -7,8 +8,7 @@ const deletePostHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' }
     })
     deletePost()
-
-
+    document.location.reload()
 }
 
 

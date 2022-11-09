@@ -51,13 +51,15 @@
     border-radius: 10px;
 }
 .post-render{
+    
     background-color: rgb(42, 202, 255);
     border-radius: 10px;
 }
 .comment{
     border: 5px solid black;
 }
-.custom-dashboard-render{
+.custom-dashboard-render .custom-dashboard-render:hover{
+    text-decoration: none;
     color: black;
     border: 3px solid black;
 }
