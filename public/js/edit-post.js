@@ -5,8 +5,8 @@ const editPostHandler = async (event) => {
     const postToUpdate = await fetch(`/api/posts/${id}`, {
       method: 'GET'
     })
-    const title = "hello"
-    const body = "hello"
+    const title = document.querySelector('.edit-post-title').value.trim()
+    const body = document.querySelector('#edit-post-body').value.trim()
     const updatedPost = await fetch(`/api/posts/${id}`, {
       method: 'PUT',
       body: JSON.stringify({title: title, body: body}),
