@@ -61,14 +61,13 @@ router.get('/:id', withAuth, async (req, res) => {
 //updat post
 router.put('/:id', withAuth, async (req, res) => {
     try{
-        const dbUpdatePost = await Post.findByPk(req.params.id,{})
+        req.session.post_id = req.params.id
+        const dbUpdatePost = await Post.findByPk(req.params.id, ({}))
         dbUpdatePost.update({
             title: req.body.title,
             body: req.body.body
         })
-        req.session.post_id = req.params.id
-        const updatePost = dbUpdatePost.get({ plain: true })
-        res.status(200).json(post)
+        res.status(200).json(dbUpdatePost)
     }catch(err){
         console.log(err)
     }
