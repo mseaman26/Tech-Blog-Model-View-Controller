@@ -19,21 +19,9 @@ const editPostHandler = async (event) => {
     console.log(updatedPost)
 }
 
-
-
-  const init = async () => {
-    const id = document.querySelector('.edit-post-title').id
-    const postToUpdate = await fetch(`/api/posts/${id}`, {
-      method: 'GET'
-    })
-    
-    const post = postToUpdate.get({ plain: true }) 
-        
-    document.querySelector('.edit-post-title').value = post.title
-    document.querySelector('#edit-post-body').value = post.body
-  }
-
-  init()
   document
-  .querySelector('#edit-post-submit')
+  .querySelector('.edit-post-submit')
   .addEventListener('click', editPostHandler);
+
+
+

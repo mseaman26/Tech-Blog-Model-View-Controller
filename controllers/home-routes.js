@@ -53,13 +53,13 @@ router.get('/create-post', withAuth, (req, res) => {
 router.get('/post/:id', withAuth, async (req, res) => {
     const dbPost = await Post.findByPk(req.params.id,{
         include: [{
-            model: User,
-            model: Comment
+            model: User
+
         }]
     })
     req.session.post_id = req.params.id
     const post = dbPost.get({ plain: true })
-
+    console.log(post)
     const dbPostComments = await Comment.findAll({
         
         where: {
@@ -72,8 +72,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
     const postComments = dbPostComments.map((post) => 
             post.get({ plain: true }))
-
-    console.log(postComments[0])
     res.render('post', {
         post: post,
         postComments: postComments

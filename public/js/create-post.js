@@ -26,8 +26,3 @@ const createPostHandler = async (event) => {
   .querySelector('#create-post-submit')
   .addEventListener('click', createPostHandler);
 
-
-  //create-post-title
-  //create-post-body
-  //create-post-submit
-  //public/js/create-post.js
