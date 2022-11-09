@@ -1,13 +1,15 @@
-<h1>{{post.title}}</h1>
-<h3>By: {{post.user.username}}</h3>
-<p>{{post.body}}</p>
-<br>
-<p>Posted: {{format_date post.createdAt}}</p>
-<h3>comments:</h3>
-
+<div class="post-render">
+  <h1>{{post.title}}</h1>
+  <h3>By: {{post.user.username}}</h3>
+  <p>{{post.body}}</p>
+  <br>
+  <p>Posted: {{format_date post.createdAt}}</p>
+  
+</div>
 {{#each postComments}}
-    <section class="card">
-        <h1>{{body}}</h1>
+    <h3>comments:</h3>
+    <section class="comment">
+        <h4>{{body}}</h4>
         <p>By: {{user.username}}</p>
         <p>{{format_date createdAt}}</p>
     </section>

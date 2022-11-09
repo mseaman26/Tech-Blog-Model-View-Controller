@@ -41,3 +41,17 @@
 .custom-small-button{
     width: 150px;
 }
+#creat-post{
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.post-render{
+    background-color: rgb(42, 202, 255)
+}
+.comment{
+    border: 5px solid black;
+}
