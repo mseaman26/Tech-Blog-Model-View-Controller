@@ -7,6 +7,7 @@ const deletePostHandler = async (event) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })
+ 
     deletePost()
     document.location.reload()
 }
