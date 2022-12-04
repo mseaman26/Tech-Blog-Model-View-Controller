@@ -84,7 +84,7 @@ router.get('/posts/edit/:id', withAuth, async (req, res) => {
     const editPost = await dbEditPost.get({plain: true})
     res.render('edit-post', editPost)
 })
-module.exports = router;
+
 //update post
 router.put('/post/:id', withAuth, async (req, res) => {
     try{
@@ -99,3 +99,4 @@ router.put('/post/:id', withAuth, async (req, res) => {
     }
     
 })
+module.exports = router;
