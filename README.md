@@ -7,7 +7,7 @@ This application is a website for posting blogs.  A user can create a username a
 
 
   ## Link to a Demo Video of the Application
-  https://youtu.be/1l4LAkRWLwo
+  https://drive.google.com/file/d/1Jg1Fq_qKqy84HPvGpnM71qz1dU6Imo49/view
 
   ## Table of Contents
 
